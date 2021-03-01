@@ -55,7 +55,7 @@ Example:
 
 ## Use the data with climetlab (partial download)
 
-See the [demo notebook](https://github.com/ecmwf-lab/climetlab-s2s-ai-competition/blob/master/demo.ipynb) next to this README file. The climetlab python package allows easy access to the data with a few lines of code such as:
+See the [demo notebook](https://nbviewer.jupyter.org/github/ecmwf-lab/climetlab-s2s-ai-competition/blob/master/demo.ipynb) ([src](https://github.com/ecmwf-lab/climetlab-s2s-ai-competition/blob/master/demo.ipynb])). The climetlab python package allows easy access to the data with a few lines of code such as:
 ```
 !pip install climetlab climetlab_s2s_ai_competition
 import climetlab as cml
