@@ -35,20 +35,30 @@ PATTERN = (
 VERSION = "0.1.7"
 
 
+SHOW_TERMS_OF_USE = True
+
 class S2sDataset(Dataset):
     name = None
     home_page = "-"
     licence = "https://apps.ecmwf.int/datasets/data/s2s/licence/"
-    # TODO : upload a json file next to the dataset and read it 
+    # TODO : upload a json file next to the dataset and read it
     documentation = "-"
     citation = "-"
-
+    terms_of_use = ("By downloading data from this dataset, you agree to the their terms: "
+    "Attribution 4.0 International(CC BY 4.0). If you do not agree with such terms, "
+    "do not download the data. For more information, please visit https://www.ecmwf.int/en/terms-use "
+    "and https://apps.ecmwf.int/datasets/data/s2s/licence/.")
 
     dataset = None
+
     def __init__(self):
         pass
 
     def _load(self, *args, **kwargs):
+        global SHOW_TERMS_OF_USE
+        if SHOW_TERMS_OF_USE:
+            print(self.terms_of_use)
+            SHOW_TERMS_OF_USE = False
 
         format = kwargs.pop("format", "grib")
         load = getattr(self, f"_load_{format}")
@@ -58,7 +68,7 @@ class S2sDataset(Dataset):
         self,
         date=None,
         parameter="tp",
-        #dataset="reference-set",
+        # dataset="reference-set",
         hindcast=False,
         version=VERSION,
     ):
@@ -83,7 +93,4 @@ class S2sDataset(Dataset):
         request = self._make_request(*args, **kwargs)
         request["format"] = "netcdf"
         request["extension"] = "nc"
-        print(PATTERN)
-        print(request)
         self.source = cml.load_source("url-pattern", PATTERN, request)
-
