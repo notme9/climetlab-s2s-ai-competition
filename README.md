@@ -57,8 +57,7 @@ Example:
 
 See the [demo notebook](https://github.com/ecmwf-lab/climetlab-s2s-ai-competition/blob/master/demo.ipynb) next to this README file. The climetlab python package allows easy access to the data with a few lines of code such as:
 ```
-!pip install climetlab_s2s_ai_competition # this plugin
-!pip install climetlab
+!pip install climetlab climetlab_s2s_ai_competition
 import climetlab as cml
 ds = cml.load_dataset("s2s-ai-competition-reference-set", date="20200102", parameter=['2t','tp'])
 ds.to_xarray()
