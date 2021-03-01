@@ -36,9 +36,9 @@ Example:
 
 
 
-### NETCDF format
+### NetCDF format
 
-The list of NetDF files can be found here: 
+The list of NetCDF files can be found here: 
 
 https://storage.ecmwf.europeanweather.cloud/s2s-ai-competition/data/reference-set/1.0.0/netcdf/index.html
 
