@@ -31,6 +31,9 @@ DATA = "s2s-ai-competition/data"
 PATTERN = (
     "{url}/{data}/{dataset}/{version}/{format}/{parameter}-{fctype}-{date}.{extension}"
 )
+ZARRPATTERN = (
+    "{url}/{data}/{dataset}/{version}/{format}/{fctype}-{date}.{extension}"
+)
 # this is the default version of the dataset
 VERSION = "0.1.7"
 
@@ -68,7 +71,6 @@ class S2sDataset(Dataset):
         self,
         date=None,
         parameter="tp",
-        # dataset="reference-set",
         hindcast=False,
         version=VERSION,
     ):
@@ -94,3 +96,20 @@ class S2sDataset(Dataset):
         request["format"] = "netcdf"
         request["extension"] = "nc"
         self.source = cml.load_source("url-pattern", PATTERN, request)
+
+    def _load_zarr(self, *args, **kwargs):
+
+        from climetlab.utils.patterns import Pattern
+        from climetlab.sources.url import Url
+
+        request = self._make_request(*args, **kwargs)
+        request["format"] = "zarr"
+        request["extension"] = "zarr"
+        request.pop('parameter')
+
+        urls = Pattern(ZARRPATTERN).substitute(request)
+        if not isinstance(urls, list):
+            urls = [urls]
+        
+        url = urls[0]
+        self.source = cml.load_source("zarr-s3", urls)
