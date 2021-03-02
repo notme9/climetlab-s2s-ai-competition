@@ -11,7 +11,7 @@ import xarray as xr
 import numpy as np
 
 # note this version number has nothing to do with the version number of the dataset
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 import climetlab as cml
 from climetlab import Dataset
@@ -108,8 +108,5 @@ class S2sDataset(Dataset):
         request.pop('parameter')
 
         urls = Pattern(ZARRPATTERN).substitute(request)
-        if not isinstance(urls, list):
-            urls = [urls]
         
-        url = urls[0]
         self.source = cml.load_source("zarr-s3", urls)
