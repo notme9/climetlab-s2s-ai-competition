@@ -38,8 +38,6 @@ ZARRPATTERN = (
 VERSION = "0.1.7"
 
 
-SHOW_TERMS_OF_USE = True
-
 class S2sDataset(Dataset):
     name = None
     home_page = "-"
@@ -47,6 +45,7 @@ class S2sDataset(Dataset):
     # TODO : upload a json file next to the dataset and read it
     documentation = "-"
     citation = "-"
+
     terms_of_use = ("By downloading data from this dataset, you agree to the their terms: "
     "Attribution 4.0 International(CC BY 4.0). If you do not agree with such terms, "
     "do not download the data. For more information, please visit https://www.ecmwf.int/en/terms-use "
@@ -58,11 +57,6 @@ class S2sDataset(Dataset):
         pass
 
     def _load(self, *args, **kwargs):
-        global SHOW_TERMS_OF_USE
-        if SHOW_TERMS_OF_USE:
-            print(self.terms_of_use)
-            SHOW_TERMS_OF_USE = False
-
         format = kwargs.pop("format", "grib")
         load = getattr(self, f"_load_{format}")
         return load(*args, **kwargs)
@@ -110,6 +104,6 @@ class S2sDataset(Dataset):
         urls = Pattern(ZARRPATTERN).substitute(request)
         if not isinstance(urls, list):
             urls = [urls]
-        
+
         url = urls[0]
         self.source = cml.load_source("zarr-s3", urls)
