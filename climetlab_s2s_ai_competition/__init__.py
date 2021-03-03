@@ -6,9 +6,6 @@
 # nor does it submit to any jurisdiction.
 #
 
-import math
-import xarray as xr
-import numpy as np
 
 # note this version number has nothing to do with the version number of the dataset
 __version__ = "0.2.1"
@@ -94,7 +91,6 @@ class S2sDataset(Dataset):
     def _load_zarr(self, *args, **kwargs):
 
         from climetlab.utils.patterns import Pattern
-        from climetlab.sources.url import Url
 
         request = self._make_request(*args, **kwargs)
         request["format"] = "zarr"
