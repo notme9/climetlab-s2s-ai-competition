@@ -14,7 +14,9 @@ import climetlab as cml
 from climetlab import Dataset
 from . import S2sDataset
 
+
 class S2sReferenceDataset(S2sDataset):
-    dataset = 'reference-set'
+    dataset = "reference-set"
+
 
 dataset = S2sReferenceDataset

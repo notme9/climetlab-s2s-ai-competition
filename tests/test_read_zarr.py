@@ -13,11 +13,11 @@ import climetlab as cml
 
 
 def test_read_zarr():
-    ds = cml.load_dataset("s2s-ai-competition", version='0.1.7', format='zarr')
+    ds = cml.load_dataset("s2s-ai-competition", version="0.1.7", format="zarr")
     xds = ds.to_xarray()
     print(xds)
 
 
 if __name__ == "__main__":
-#    test_direct_read_zarr()
+    #    test_direct_read_zarr()
     test_read_zarr()

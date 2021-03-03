@@ -14,7 +14,9 @@ import climetlab as cml
 from climetlab import Dataset
 from . import S2sDataset
 
+
 class S2sTrainingDataset(S2sDataset):
-    dataset = 'training-set'
+    dataset = "training-set"
+
 
 dataset = S2sTrainingDataset
