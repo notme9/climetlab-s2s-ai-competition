@@ -30,6 +30,8 @@ for line in read(init_py).split("\n"):
 assert version
 
 
+install_requires = ["requests", "s3fs", "climetlab==0.2.2"]
+
 setuptools.setup(
     name=package_name,
     version=version,
@@ -41,7 +43,7 @@ setuptools.setup(
     url="https://github.com/ecmwf-lab/climetlab-s2s-ai-competition",
     packages=setuptools.find_packages(),
     include_package_data=True,
-    install_requires=["requests", "s3fs", "climetlab"],
+    install_requires=install_requires,
     zip_safe=True,
     entry_points={
         "climetlab.datasets": [
