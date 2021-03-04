@@ -59,7 +59,7 @@ class S2sDataset(Dataset):
         load = getattr(self, f"_load_{format}")
         return load(*args, **kwargs)
 
-    # @parameters(parameter=("allowed-values", ["tp"]))
+    @parameters(parameter=("parameter-list", ["tp"]))
     @parameters(date=("date-list", "%Y%m%d"))
     def _make_request(
         self,
