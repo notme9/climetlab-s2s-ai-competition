@@ -17,7 +17,7 @@ There are several ways to use the datasets:
 Data is available weekly every 7 days from 2020-01-02 (every Thurday).
 
 ## Direct download 
-### GRIB format :
+### GRIB format : 
 
 The list of GRIB files can be found here : 
 
