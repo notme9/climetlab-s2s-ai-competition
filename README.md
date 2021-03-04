@@ -63,8 +63,6 @@ ds = cml.load_dataset("s2s-ai-competition-reference-set", date="20200102", param
 ds.to_xarray()
 ```
 
-
-
 # Training dataset
 
 TODO
