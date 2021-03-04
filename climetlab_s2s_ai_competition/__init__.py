@@ -12,6 +12,7 @@ __version__ = "0.2.2"
 
 import climetlab as cml
 from climetlab import Dataset
+from climetlab.decorators import parameters
 
 
 def _makelist(x):
@@ -58,6 +59,8 @@ class S2sDataset(Dataset):
         load = getattr(self, f"_load_{format}")
         return load(*args, **kwargs)
 
+    # @parameters(parameter=("allowed-values", ["tp"]))
+    @parameters(date=("date-list", "%Y%m%d"))
     def _make_request(
         self,
         date=None,
